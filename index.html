@@ -340,7 +340,7 @@ function renderVisao(){
   const kpis = [
     {label:'Visitas aos anúncios', value: fmtInt(agg.visitas), foot:'≈ '+fmtInt(agg.visitas/diasPeriodo)+'/dia'},
     {label:'Contatos gerados (leads)', value: fmtInt(agg.contatos), foot: contatosFoot, footClass: contatosFootClass},
-    {label:'Contatos via WhatsApp', value: fmtPct(agg.pctWhatsapp), foot:'canal direto com a loja', footClass:'blue'},
+    {label:'Contatos via WhatsApp', value: fmtPct(agg.pctWhatsapp), foot: fmtInt(agg.whatsapp)+' leads gerados via WhatsApp', footClass:'blue'},
     {label:'Visitas por anúncio', value: fmtInt(agg.visitasPorAnuncio), foot:'alcance por veículo', footClass:'blue'},
   ];
   document.getElementById('kpisVisao').innerHTML = kpis.map(k=>`<div class="kpi"><div class="label">${k.label}</div><div class="value">${k.value}</div>${k.foot?`<div class="foot${k.footClass?' '+k.footClass:''}">${k.foot}</div>`:''}</div>`).join('');
