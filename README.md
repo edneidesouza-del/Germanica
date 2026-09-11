@@ -2,6 +2,8 @@
 
 Dashboard HTML interativo (arquivo único, Chart.js) com o desempenho dos anúncios de veículos do Grupo Germânica no Mercado Livre — período jun–set/2026.
 
+**Link ao vivo:** https://edneidesouza-del.github.io/Germanica/
+
 Abrir: [`index.html`](./index.html) (funciona localmente, sem servidor — é um arquivo único).
 
 ## Abas
