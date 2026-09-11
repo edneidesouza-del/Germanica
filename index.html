@@ -12,27 +12,37 @@
   }
   *{box-sizing:border-box;}
   body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
-  header{background:var(--navy);color:#fff;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-  header h1{margin:0;font-size:19px;font-weight:700;}
-  header .sub{font-size:13px;opacity:.8;margin-top:4px;}
-  header .badge{background:var(--yellow);color:var(--navy);font-weight:700;font-size:12px;padding:5px 12px;border-radius:20px;}
+  header{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);color:#fff;padding:32px 28px 26px;}
+  header .headtop{max-width:1320px;margin:0 auto;}
+  .ml-pill{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-weight:800;font-size:14px;padding:7px 16px;border-radius:20px;}
+  .ml-pill .x{opacity:.55;font-weight:700;}
+  .ml-pill .client{background:transparent;color:#fff;}
+  header h1{margin:14px 0 6px;font-size:30px;font-weight:800;letter-spacing:-.01em;}
+  header .sub{font-size:15px;opacity:.85;margin-top:2px;}
+  .stats-pill{display:inline-block;margin-top:16px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:13px;font-weight:600;padding:7px 16px;border-radius:20px;}
   nav.tabs{display:flex;gap:4px;background:#fff;padding:0 28px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;}
-  nav.tabs button{border:none;background:transparent;padding:14px 18px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;}
-  nav.tabs button.active{color:var(--navy);border-bottom-color:var(--blue);}
+  nav.tabs button{border:none;background:transparent;padding:16px 18px;font-size:14.5px;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:4px solid transparent;}
+  nav.tabs button.active{color:var(--navy);border-bottom-color:var(--yellow);}
   main{padding:22px 28px 60px;max-width:1320px;margin:0 auto;}
   section{display:none;}
   section.active{display:block;}
-  .toolbar{display:flex;gap:14px;flex-wrap:wrap;align-items:end;margin-bottom:18px;}
+  .toolbar{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:20px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;}
+  .toolbar .tb-note{font-size:12.5px;color:var(--muted);flex:1;min-width:220px;}
   .field{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted);font-weight:600;}
   select,input[type=text]{padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:#fff;min-width:160px;}
+  .section-title{display:flex;align-items:center;gap:9px;margin:26px 0 14px;font-size:16px;font-weight:800;color:var(--navy);}
+  .section-title:first-child{margin-top:0;}
+  .section-title::before{content:'';display:inline-block;width:5px;height:20px;background:var(--yellow);border-radius:3px;}
   .notice{background:#FFF9E0;border:1px solid #F0DE9A;color:#6b5900;border-radius:10px;padding:12px 16px;font-size:12.5px;line-height:1.5;margin-bottom:18px;}
   .notice b{color:#4a3d00;}
-  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin-bottom:20px;}
-  .kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;}
-  .kpi .label{font-size:11.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.03em;}
-  .kpi .value{font-size:22px;font-weight:800;color:var(--navy);margin-top:4px;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px;}
+  .kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;}
+  .kpi .label{font-size:12.5px;color:var(--muted);font-weight:600;}
+  .kpi .value{font-size:26px;font-weight:800;color:var(--navy);margin-top:6px;}
   .kpi .value.green{color:var(--green);}
-  .kpi .foot{font-size:11px;color:var(--muted);margin-top:2px;}
+  .kpi .foot{font-size:12px;color:var(--green);font-weight:700;margin-top:8px;}
+  .kpi .foot.muted{color:var(--muted);font-weight:600;}
+  .kpi .foot.blue{color:var(--blue);}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
   .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
   @media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr;}}
@@ -61,11 +71,12 @@
 <body>
 
 <header>
-  <div>
-    <h1>Grupo Germânica × Mercado Livre</h1>
-    <div class="sub">Estudo de resultados — anúncios de veículos · <span id="periodoLabel"></span></div>
+  <div class="headtop">
+    <span class="ml-pill">Mercado Livre <span class="x">×</span> <span class="client">Grupo Germânica</span></span>
+    <h1>Resultados no Mercado Livre — Veículos</h1>
+    <div class="sub">Desempenho dos anúncios e geração de contatos · <span id="periodoLabel"></span></div>
+    <div><span class="stats-pill" id="statsPill"></span></div>
   </div>
-  <div class="badge" id="geradoBadge"></div>
 </header>
 
 <nav class="tabs">
@@ -82,12 +93,15 @@
     <div class="field">Mês
       <select id="fMes"></select>
     </div>
+    <div class="tb-note">KPIs, gráficos e a tabela por marca acompanham o mês selecionado. Os textos de leitura/insights descrevem o período completo.</div>
   </div>
 
   <div class="notice" id="notice"></div>
 
+  <div class="section-title" id="tituloVisaoGeral">Visão geral do período</div>
   <div class="kpis" id="kpisVisao"></div>
 
+  <div class="section-title">Evolução mensal</div>
   <div class="grid2">
     <div class="card">
       <h3>Evolução mensal</h3>
@@ -101,6 +115,7 @@
     </div>
   </div>
 
+  <div class="section-title">Marcas</div>
   <div class="card" style="margin-bottom:20px;">
     <h3>Marcas — participação em anúncios x participação em contatos</h3>
     <div class="card-sub">Marcas cujo share de contatos supera o share de anúncios operam acima da média de eficiência (oportunidade de aumentar volume)</div>
@@ -108,6 +123,7 @@
     <div id="brandInsights" style="margin-top:12px;"></div>
   </div>
 
+  <div class="section-title">Modelos e planos</div>
   <div class="grid2">
     <div class="card">
       <h3>Top modelos por contatos</h3>
@@ -122,6 +138,7 @@
     </div>
   </div>
 
+  <div class="section-title">Condição e faixa de preço</div>
   <div class="grid2">
     <div class="card">
       <h3>Novos x Usados — conversão visita → contato</h3>
@@ -144,10 +161,13 @@
     <div class="field">Mês
       <select id="fMesLoja"></select>
     </div>
+    <div class="tb-note">Selecione uma loja para ver KPIs e insights individuais; "Todas as lojas" mostra a visão consolidada da rede.</div>
   </div>
 
+  <div class="section-title">Visão geral</div>
   <div class="kpis" id="kpisLoja"></div>
 
+  <div class="section-title">Ranking e comparativo</div>
   <div class="grid2">
     <div class="card">
       <h3>Top 15 lojas por contatos</h3>
@@ -200,6 +220,7 @@
         <option value="Precio_asc">Menor preço</option>
       </select>
     </div>
+    <div class="tb-note">Busque um anúncio individual ou filtre por mês/condição para revisar oportunidades de estoque.</div>
   </div>
 
   <div id="estoqueInsights" style="margin-bottom:16px;"></div>
@@ -275,8 +296,8 @@ document.querySelectorAll('nav.tabs button').forEach(btn=>{
 });
 
 /* ---------------- header ---------------- */
-document.getElementById('periodoLabel').textContent = 'Jun–Set/2026';
-document.getElementById('geradoBadge').textContent = 'Gerado em '+DATA.meta.gerado_em;
+document.getElementById('periodoLabel').textContent = 'Junho a Setembro de 2026';
+document.getElementById('statsPill').textContent = `${DATA.meta.total_lojas} lojas · ${DATA.meta.total_marcas} marcas · ${fmtInt(DATA.meta.total_anuncios)} anúncios ativos`;
 document.getElementById('notice').innerHTML = '<b>Nota metodológica:</b> '+DATA.meta.aviso_dados;
 
 /* ---------------- month selects (shared population) ---------------- */
@@ -303,18 +324,20 @@ function renderVisao(){
   const rows = filterRows({mes:mesSel});
   const agg = basicAgg(rows);
 
+  const diasPeriodo = mesSel==='all' ? 103 : ({6:30,7:31,8:31,9:11})[mesSel];
   const kpis = [
-    {label:'Visitas (total)', value: fmtInt(agg.visitas), foot:'mediana/anúncio: '+fmtInt(agg.medianaVisita)},
-    {label:'Contatos (total)', value: fmtInt(agg.contatos), foot:agg.anuncios+' anúncios ativos'},
-    {label:'% via WhatsApp', value: fmtPct(agg.pctWhatsapp)},
-    {label:'Contatos por anúncio', value: fmtDec(agg.contatosPorAnuncio,2)},
-    {label:'Lojas ativas', value: agg.lojas},
-    {label:'Marcas ativas', value: agg.marcas},
+    {label:'Visitas aos anúncios', value: fmtInt(agg.visitas), foot:'≈ '+fmtInt(agg.visitas/diasPeriodo)+'/dia'},
+    {label:'Contatos gerados (leads)', value: fmtInt(agg.contatos), foot:'mediana: '+fmtInt(agg.medianaVisita)+' visitas/anúncio'},
+    {label:'Contatos via WhatsApp', value: fmtPct(agg.pctWhatsapp), foot:'canal direto com a loja', footClass:'blue'},
+    {label:'Visitas por anúncio', value: fmtInt(agg.visitasPorAnuncio), foot:'alcance por veículo', footClass:'blue'},
+    {label:'Contatos por anúncio', value: fmtDec(agg.contatosPorAnuncio,2), foot: agg.anuncios+' anúncios ativos', footClass:'muted'},
+    {label:'Lojas · marcas ativas', value: agg.lojas+' · '+agg.marcas, footClass:'muted'},
   ];
   if(mesSel==='all'){
-    kpis.push({label:'Crescimento contatos', value:(DATA.meta.crescimento_contatos_pct>=0?'+':'')+fmtDec(DATA.meta.crescimento_contatos_pct,1)+'%', foot:'jun → set (ver nota de dados)'});
+    const c = DATA.meta.crescimento_contatos_pct;
+    kpis.push({label:'Variação de contatos', value:(c>=0?'+':'')+fmtDec(c,1)+'%', foot:'jun → set · ver nota metodológica', footClass:'muted'});
   }
-  document.getElementById('kpisVisao').innerHTML = kpis.map(k=>`<div class="kpi"><div class="label">${k.label}</div><div class="value">${k.value}</div>${k.foot?`<div class="foot">${k.foot}</div>`:''}</div>`).join('');
+  document.getElementById('kpisVisao').innerHTML = kpis.map(k=>`<div class="kpi"><div class="label">${k.label}</div><div class="value">${k.value}</div>${k.foot?`<div class="foot${k.footClass?' '+k.footClass:''}">${k.foot}</div>`:''}</div>`).join('');
 
   // Evolucao mensal — sempre todos os meses
   const allByMonth = DATA.meta.meses_incluidos.map(m=>basicAgg(filterRows({mes:m})));
