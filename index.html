@@ -97,8 +97,6 @@
     <div class="tb-note">KPIs, gráficos e a tabela por marca acompanham o mês selecionado. Os textos de leitura/insights descrevem o período completo.</div>
   </div>
 
-  <div class="notice" id="notice"></div>
-
   <div class="section-title" id="tituloVisaoGeral">Visão geral do período</div>
   <div class="kpis" id="kpisVisao"></div>
 
@@ -301,7 +299,6 @@ document.querySelectorAll('nav.tabs button').forEach(btn=>{
 /* ---------------- header ---------------- */
 document.getElementById('periodoLabel').textContent = 'Junho a Agosto de 2026';
 document.getElementById('statsPill').textContent = `${DATA.meta.total_lojas} lojas · ${DATA.meta.total_marcas} marcas · ${fmtInt(DATA.meta.total_anuncios)} anúncios ativos`;
-document.getElementById('notice').innerHTML = '<b>Nota metodológica:</b> '+DATA.meta.aviso_dados;
 
 /* ---------------- month selects (shared population) ---------------- */
 function fillMesSelect(el, withAll=true){
